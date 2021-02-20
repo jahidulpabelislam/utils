@@ -8,7 +8,7 @@ class PaginatedCollection extends Collection {
     protected $page;
     protected $totalCount;
 
-    public function __construct(array $items = [], int $limit, int $page = 1, int $totalCount = null) {
+    public function __construct(array $items, int $limit, int $page = 1, int $totalCount = null) {
         parent::__construct($items);
         $this->limit = $limit;
         $this->page = $page;
