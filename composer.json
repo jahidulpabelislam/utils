@@ -1,0 +1,20 @@
+{
+    "name": "jpi/utilities",
+    "description": "Library with various utility classes",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Jahidul Pabel Islam",
+            "email": "me@jahidulpabelislam.com"
+        }
+    ],
+    "keywords": ["utilities"],
+    "require": {
+        "php" : "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "JPI\\Utilities\\": "src/"
+        }
+    }
+}
