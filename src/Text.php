@@ -2,7 +2,7 @@
 
 namespace JPI\Utilities;
 
-class String {
+class Text {
 
     public static function removeLeadingSlash(string $url): string {
         if ($url[0] === "/") {
