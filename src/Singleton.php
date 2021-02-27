@@ -2,8 +2,7 @@
 
 namespace JPI\Utilities;
 
-trait Singleton
-{
+trait Singleton {
 
     protected static $instance = null;
 
