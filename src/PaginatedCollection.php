@@ -2,7 +2,7 @@
 
 namespace JPI\Utilities;
 
-class PaginatedCollection extends Collection {
+trait PaginatedCollection {
 
     protected $limit;
     protected $page;
