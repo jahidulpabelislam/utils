@@ -4,10 +4,6 @@ namespace JPI\Utilities;
 
 class ArrayCollection extends Collection {
 
-    public function toArray(): array {
-        return $this->items;
-    }
-
     /**
      * @param $item array
      * @param $key string
