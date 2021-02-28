@@ -48,21 +48,10 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
     }
 
     public function toArray(): array {
-        $array = [];
-
-        foreach ($this->items as $key => $item) {
-            if ($item instanceof Arrayable) {
-                $array[$key] = $item->toArray();
-            }
-            else {
-                $array[$key] = $item;
-            }
-        }
-
-        return $array;
+        return $this->getItems();
     }
 
-    // ArrayAccess //
+    // ArrayAccess - Start //
 
     public function offsetExists($offset): bool {
         return $this->doesKeyExist($offset);
@@ -85,13 +74,17 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         $this->removeByKey($offset);
     }
 
-    // IteratorAggregate //
+    // ArrayAccess - End //
+
+    // IteratorAggregate - Start //
 
     public function getIterator(): ArrayIterator {
         return new ArrayIterator($this->items);
     }
 
-    // Countable //
+    // IteratorAggregate - End //
+
+    // Countable - Start //
 
     public function count(): int {
         if ($this->count === null) {
@@ -101,27 +94,31 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         return $this->count;
     }
 
+    // Countable - End //
+
     protected static function getFromItem($item, $key, $default = null) {
-        $value = $default;
         if (is_object($item)) {
             if (isset($item->{$key})) {
-                $value = $item->{$key};
+                return $item->{$key};
             }
-            else if (method_exists($item, $key)) {
-                $value = $item->{$key}();
+
+            if (method_exists($item, $key)) {
+                return $item->{$key}();
             }
-            else if ($item instanceof Arrayable) {
-                $array = $item->toArray();
-                if (isset($array[$key])) {
-                    $value = $array[$key];
-                }
-            }
-        }
-        else if ((is_array($item) || $item instanceof ArrayAccess) && isset($item[$key])) {
-            $value = $item[$key];
         }
 
-        return $value;
+        if (
+            is_array($item)
+            || $item instanceof Arrayable
+            || $item instanceof ArrayAccess
+        ) {
+            $array = $item instanceof Arrayable ? $item->toArray() : $item;
+            if (isset($array[$key])) {
+                return $array[$key];
+            }
+        }
+
+        return $default;
     }
 
     public function pluck($toPluck, $keyedBy = null): Collection {
