@@ -79,7 +79,7 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
     // IteratorAggregate - Start //
 
     public function getIterator(): ArrayIterator {
-        return new ArrayIterator($this->items);
+        return new ArrayIterator($this->getItems());
     }
 
     // IteratorAggregate - End //
@@ -88,7 +88,7 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
 
     public function count(): int {
         if ($this->count === null) {
-            $this->count = count($this->items);
+            $this->count = count($this->getItems());
         }
 
         return $this->count;
@@ -155,5 +155,4 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
 
         return $collection;
     }
-
 }
