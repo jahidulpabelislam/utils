@@ -121,10 +121,16 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         return $default;
     }
 
+    public function each(callable $callback) {
+        foreach ($this as $key => $item) {
+            $callback($key, $item);
+        }
+    }
+
     public function pluck($toPluck, $keyedBy = null): Collection {
         $plucked = new Collection();
 
-        foreach ($this->items as $item) {
+        $this->each(function ($key, $item) use ($plucked, $toPluck, $keyedBy) {
             $value = static::getFromItem($item, $toPluck);
 
             if ($keyedBy) {
@@ -134,16 +140,16 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
             else {
                 $plucked->add($value);
             }
-        }
+        });
 
         return $plucked;
     }
 
-    public function groupBy($key): Collection {
+    public function groupBy($groupByKey): Collection {
         $collection = new Collection();
 
-        foreach ($this->items as $item) {
-            $value = static::getFromItem($item, $key);
+        $this->each(function ($key, $item) use ($collection, $groupByKey) {
+            $value = static::getFromItem($item, $groupByKey);
 
             if (!isset($collection[$value])) {
                 $collection->set($value, new static([$item]));
@@ -151,7 +157,7 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
             else {
                 $collection[$value]->add($item);
             }
-        }
+        });
 
         return $collection;
     }
