@@ -49,5 +49,4 @@ class File {
     public function render(string $default = "") {
         echo $this->get($default);
     }
-
 }

@@ -13,5 +13,4 @@ class ArrayCollection extends Collection {
     protected static function getFromItem($item, $key, $default = null) {
         return $item[$key] ?? $default;
     }
-
 }

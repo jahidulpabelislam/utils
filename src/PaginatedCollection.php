@@ -26,5 +26,4 @@ trait PaginatedCollection {
     public function getPage(): int {
         return $this->page;
     }
-
 }
