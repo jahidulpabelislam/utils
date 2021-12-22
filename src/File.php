@@ -1,5 +1,7 @@
 <?php
 
+namespace JPI\Utilities;
+
 class File {
 
     private $path;
