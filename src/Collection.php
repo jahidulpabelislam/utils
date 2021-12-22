@@ -16,26 +16,26 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         $this->items = $items;
     }
 
-    protected function resetCount() {
+    protected function resetCount(): void {
         $this->count = null;
     }
 
-    public function set($key, $item) {
+    public function set($key, $item): void {
         $this->items[$key] = $item;
         $this->resetCount();
     }
 
-    public function add($item) {
+    public function add($item): void {
         $this->items[] = $item;
         $this->resetCount();
     }
 
-    public function removeByKey($key) {
+    public function removeByKey($key): bool {
         unset($this->items[$key]);
         $this->resetCount();
     }
 
-    protected function doesKeyExist($key) {
+    protected function doesKeyExist($key): bool {
         return array_key_exists($key, $this->items);
     }
 
@@ -61,7 +61,7 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         return $this->get($offset);
     }
 
-    public function offsetSet($offset, $item) {
+    public function offsetSet($offset, $item): void {
         if ($offset === null) {
             $this->add($item);
         }
@@ -70,7 +70,7 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         }
     }
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset): void {
         $this->removeByKey($offset);
     }
 
@@ -121,7 +121,7 @@ class Collection implements Arrayable, ArrayAccess, Countable, IteratorAggregate
         return $default;
     }
 
-    public function each(callable $callback) {
+    public function each(callable $callback): void {
         foreach ($this as $key => $item) {
             $callback($key, $item);
         }
