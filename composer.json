@@ -1,5 +1,5 @@
 {
-    "name": "jpi/utilities",
+    "name": "jpi/utils",
     "description": "Library with various utility classes",
     "license": "GPL-3.0-only",
     "authors": [
@@ -12,12 +12,11 @@
         "utilities"
     ],
     "require": {
-        "php": "^7.1",
-        "ext-json": "*"
+        "php": "^7.1"
     },
     "autoload": {
         "psr-4": {
-            "JPI\\Utilities\\": "src/"
+            "JPI\\Utils\\": "src/"
         }
     }
 }
