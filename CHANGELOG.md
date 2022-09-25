@@ -7,13 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-09-26
+
+### Added
+
+- added a URL helper class
+
 ## [0.1.0] - 2022-09-18
 
 Initial release.
 
 ### Added
 
-- added singleton class
+- added singleton trait
 
-[unreleased]: https://github.com/jahidulpabelislam/utilities/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/jahidulpabelislam/utilities/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/jahidulpabelislam/utilities/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/jahidulpabelislam/utilities/releases/tag/v0.1.0
