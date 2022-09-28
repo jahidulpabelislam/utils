@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace JPI\Utils;
 
@@ -29,6 +29,14 @@ class URL {
     public static function addTrailingSlash(string $url): string {
         $url = trim($url, " ");
         $url = rtrim($url, "/");
+
+        // If the last path segment includes a full stop, assume it's a file... so don't add trailing slash
+        $splitPaths = explode("/", $url);
+        $count = count($splitPaths);
+        if (strpos($splitPaths[$count - 1], ".")) {
+            return $url;
+        }
+
         return "$url/";
     }
 }
