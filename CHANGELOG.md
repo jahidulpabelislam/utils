@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2022-09-28
+
+### Changed
+
+- added check for file for addTrailingSlash method
+
 ## [0.2.1] - 2022-09-27
 
-### Update
+### Changed
 
 - declare strict types on Singleton trait 
 
@@ -27,7 +33,8 @@ Initial release.
 
 - added singleton trait
 
-[unreleased]: https://github.com/jahidulpabelislam/utilities/compare/v0.2.1...HEAD
+[unreleased]: https://github.com/jahidulpabelislam/utilities/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/jahidulpabelislam/utilities/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/jahidulpabelislam/utilities/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/jahidulpabelislam/utilities/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/jahidulpabelislam/utilities/releases/tag/v0.1.0
