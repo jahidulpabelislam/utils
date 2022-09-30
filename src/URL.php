@@ -1,31 +1,68 @@
 <?php
 
+/**
+ * URL builder & helper methods around URLs.
+ *
+ * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
+ * @copyright 2012-2022 JPI
+ */
+
 declare(strict_types=1);
 
 namespace JPI\Utils;
 
 class URL {
 
-    public static function removeLeadingSlash(string $url): string {
-        $url = trim($url, " ");
-        return ltrim($url, "/");
+    /**
+     * Remove the leading slash from passed path (if there is one).
+     *
+     * @param $path string
+     * @return string
+     */
+    public static function removeLeadingSlash(string $path): string {
+        $path = trim($path, " ");
+        return ltrim($path, "/");
     }
 
+    /**
+     * Remove the trailing slash from passed URL (if there is one).
+     *
+     * @param $url string
+     * @return string
+     */
     public static function removeTrailingSlash(string $url): string {
         $url = trim($url, " ");
         return rtrim($url, "/");
     }
 
-    public static function removeSlashes(string $url): string {
-        return trim($url, " /");
+    /**
+     * Remove both leading & trailing slashes from passed path (if there is any).
+     *
+     * @param $path string
+     * @return string
+     */
+    public static function removeSlashes(string $path): string {
+        return trim($path, " /");
     }
 
-    public static function addLeadingSlash(string $url): string {
-        $url = trim($url, " ");
-        $url = ltrim($url, "/");
-        return "/$url";
+    /**
+     * Add a leading slash to passed path (if there isn't one already).
+     *
+     * @param $path string
+     * @return string
+     */
+    public static function addLeadingSlash(string $path): string {
+        $path = trim($path, " ");
+        $path = ltrim($path, "/");
+        return "/$path";
     }
 
+    /**
+     * Add a trailing slash to passed URL (if there isn't one already).
+     *
+     * @param $url string
+     * @return string
+     */
     public static function addTrailingSlash(string $url): string {
         $url = trim($url, " ");
         $url = rtrim($url, "/");
@@ -43,20 +80,49 @@ class URL {
         return "$url/";
     }
 
+    /**
+     * @var string|null
+     */
     protected $scheme;
+
+    /**
+     * @var string|null
+     */
     protected $host;
+
+    /**
+     * @var string|null
+     */
     protected $path;
+
+    /**
+     * @var array
+     */
     protected $params = [];
+
+    /**
+     * @var string|null
+     */
     protected $fragment;
 
+    /**
+     * Whether to add a trailing slash at the end of the path.
+     *
+     * @var bool
+     */
     protected $addTrailingSlash = true;
 
+    /**
+     * Parse the components out from passed URL string if passed.
+     *
+     * @param $url string|null
+     */
     public function __construct(string $url = null) {
         if (!$url) {
             return;
         }
 
-        $isProtocolRelative = strpos($url, '//') === 0;
+        $isProtocolRelative = strpos($url, "//") === 0;
 
         if ($isProtocolRelative) {
             $url = "https:$url";
@@ -79,18 +145,30 @@ class URL {
         $this->setFragment($parsed["fragment"] ?? null);
     }
 
+    /**
+     * @param $scheme string|null
+     * @return $this
+     */
     public function setScheme(string $scheme = null): URL {
         $this->scheme = $scheme;
         return $this;
     }
 
+    /**
+     * @param $host string|null
+     * @return $this
+     */
     public function setHost(string $host = null): URL {
         $this->host = $host;
         return $this;
     }
 
+    /**
+     * @param $path string|null
+     * @return $this
+     */
     public function setPath(string $path = null): URL {
-        if ($path === '/') {
+        if ($path === "/") {
             $path = null;
         }
 
@@ -98,6 +176,12 @@ class URL {
         return $this;
     }
 
+    /**
+     * Add part(s) to the current path.
+     *
+     * @param $path string
+     * @return $this
+     */
     public function addPath(string $path): URL {
         if (!$this->path) {
             return $this->setPath($path);
@@ -105,16 +189,31 @@ class URL {
         return $this->setPath(static::addTrailingSlash($this->path) . $path);
     }
 
+    /**
+     * Set query params.
+     *
+     * @param $params array
+     * @return $this
+     */
     public function setParams(array $params): URL {
         $this->params = $params;
         return $this;
     }
 
+    /**
+     * @param $fragment string|null
+     * @return $this
+     */
     public function setFragment(string $fragment = null): URL {
         $this->fragment = $fragment;
         return $this;
     }
 
+    /**
+     * Build the URL from current values of each component.
+     *
+     * @return string
+     */
     public function build(): string {
         $string = "";
 
@@ -153,6 +252,10 @@ class URL {
         return $string;
     }
 
+    /**
+     * @return string
+     * @author Jahidul Islam <jahidul@d3r.com>
+     */
     public function __toString(): string {
         return $this->build();
     }
