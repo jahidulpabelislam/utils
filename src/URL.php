@@ -225,7 +225,7 @@ class URL {
     }
 
     /**
-     * @return array
+     * @return string|null
      */
     public function getQuery(): ?string {
         if (!$this->params) {
