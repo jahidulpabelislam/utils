@@ -230,6 +230,17 @@ class URL {
     }
 
     /**
+     * Remove a query parameter.
+     *
+     * @param $key string
+     * @return $this
+     */
+    public function removeParam(string $key): URL {
+        unset($this->params[$key]);
+        return $this;
+    }
+
+    /**
      * Get query parameters.
      *
      * @return array
