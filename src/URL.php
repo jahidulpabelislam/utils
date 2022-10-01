@@ -31,10 +31,13 @@ class URL {
         $url = rtrim($url, "/");
 
         // If the last path segment includes a full stop, assume it's a file... so don't add trailing slash
-        $splitPaths = explode("/", $url);
-        $count = count($splitPaths);
-        if (strpos($splitPaths[$count - 1], ".")) {
-            return $url;
+        $path = parse_url($url, PHP_URL_PATH);
+        if ($path) {
+            $splitPaths = explode("/", $path);
+            $count = count($splitPaths);
+            if (strpos($splitPaths[$count - 1], ".")) {
+                return $url;
+            }
         }
 
         return "$url/";
