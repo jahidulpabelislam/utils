@@ -207,7 +207,7 @@ class URL {
     }
 
     /**
-     * Set query params.
+     * Set query parameters.
      *
      * @param $params array
      * @return $this
@@ -218,6 +218,20 @@ class URL {
     }
 
     /**
+     * Add/set query parameter.
+     *
+     * @param $key string
+     * @param $value string
+     * @return $this
+     */
+    public function setParam(string $key, string $value): URL {
+        $this->params[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * Get query parameters.
+     *
      * @return array
      */
     public function getParams(): array {
