@@ -282,9 +282,6 @@ class URL {
 
             $string .= "?" . $this->getQuery();
         }
-        else if (!$this->scheme && !$this->host && !$this->path) {
-            $string = "/";
-        }
 
         if ($this->fragment) {
             $string .= "#$this->fragment";
