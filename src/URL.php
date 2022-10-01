@@ -234,11 +234,10 @@ class URL {
         }
 
         if ($this->params) {
-            if ($this->path) {
+            if ($this->addTrailingSlash) {
                 $string = static::addTrailingSlash($string);
-            } else {
-                $string .= "/";
             }
+
             $string .= "?" . http_build_query($this->params);
         }
         else if (!$this->scheme && !$this->host && !$this->path) {
