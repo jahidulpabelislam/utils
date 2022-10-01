@@ -168,10 +168,6 @@ class URL {
      * @return $this
      */
     public function setPath(string $path = null): URL {
-        if ($path === "/") {
-            $path = null;
-        }
-
         $this->path = $path;
         return $this;
     }
