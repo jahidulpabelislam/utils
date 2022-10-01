@@ -155,12 +155,26 @@ class URL {
     }
 
     /**
+     * @return string|null
+     */
+    public function getScheme(): ?string {
+        return $this->scheme;
+    }
+
+    /**
      * @param $host string|null
      * @return $this
      */
     public function setHost(string $host = null): URL {
         $this->host = $host;
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getHost(): ?string {
+        return $this->host;
     }
 
     /**
@@ -186,6 +200,13 @@ class URL {
     }
 
     /**
+     * @return string|null
+     */
+    public function getPath(): ?string {
+        return $this->path;
+    }
+
+    /**
      * Set query params.
      *
      * @param $params array
@@ -197,12 +218,37 @@ class URL {
     }
 
     /**
+     * @return array
+     */
+    public function getParams(): array {
+        return $this->params;
+    }
+
+    /**
+     * @return array
+     */
+    public function getQuery(): ?string {
+        if (!$this->params) {
+            return null;
+        }
+
+        return http_build_query($this->params);
+    }
+
+    /**
      * @param $fragment string|null
      * @return $this
      */
     public function setFragment(string $fragment = null): URL {
         $this->fragment = $fragment;
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFragment(): ?string {
+        return $this->fragment;
     }
 
     /**
@@ -234,7 +280,7 @@ class URL {
                 $string = static::addTrailingSlash($string);
             }
 
-            $string .= "?" . http_build_query($this->params);
+            $string .= "?" . $this->getQuery();
         }
         else if (!$this->scheme && !$this->host && !$this->path) {
             $string = "/";
