@@ -221,10 +221,10 @@ class URL {
      * Add/set query parameter.
      *
      * @param $key string
-     * @param $value string
+     * @param $value string|array
      * @return $this
      */
-    public function setParam(string $key, string $value): URL {
+    public function setParam(string $key, $value): URL {
         $this->params[$key] = $value;
         return $this;
     }
