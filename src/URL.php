@@ -269,17 +269,13 @@ class URL {
 
         if ($this->path) {
             $string .= static::addLeadingSlash($this->path);
+        }
 
-            if ($this->addTrailingSlash) {
-                $string = static::addTrailingSlash($string);
-            }
+        if (($this->path || $this->params || $this->fragment) && $this->addTrailingSlash) {
+            $string = static::addTrailingSlash($string);
         }
 
         if ($this->params) {
-            if ($this->addTrailingSlash) {
-                $string = static::addTrailingSlash($string);
-            }
-
             $string .= "?" . $this->getQuery();
         }
 
