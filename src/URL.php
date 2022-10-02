@@ -196,7 +196,7 @@ class URL {
         if (!$this->path) {
             return $this->setPath($path);
         }
-        return $this->setPath(static::addTrailingSlash($this->path) . $path);
+        return $this->setPath(static::addTrailingSlash($this->path) . static::removeLeadingSlash($path));
     }
 
     /**
