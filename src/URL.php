@@ -130,9 +130,7 @@ class URL {
 
         $parsed = parse_url($url);
 
-        if (!$isProtocolRelative) {
-            $this->setScheme($parsed["scheme"] ?? null);
-        }
+        $this->setScheme($isProtocolRelative ? "//" : ($parsed["scheme"] ?? null));
 
         $this->setHost($parsed["host"] ?? null);
         $this->setPath($parsed["path"] ?? null);
@@ -285,11 +283,15 @@ class URL {
         $string = "";
 
         if ($this->scheme) {
-            $string = "$this->scheme:";
+            if ($this->scheme === "//") {
+                $string = "//";
+            } else {
+                $string = "$this->scheme://";
+            }
         }
 
         if ($this->host) {
-            $string .= "//$this->host";
+            $string .= $this->host;
         }
 
         if ($this->path) {
