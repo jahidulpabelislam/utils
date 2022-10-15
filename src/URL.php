@@ -298,7 +298,7 @@ class URL {
             $string .= static::addLeadingSlash($this->path);
         }
 
-        if (($this->path || $this->params || $this->fragment) && $this->addTrailingSlash) {
+        if ($this->addTrailingSlash && ($this->path || $this->params || $this->fragment)) {
             $string = static::addTrailingSlash($string);
         }
 
