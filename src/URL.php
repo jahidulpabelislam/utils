@@ -1,22 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
+namespace JPI\Utils;
+
 /**
  * URL builder & helper methods around URLs.
  *
  * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
  * @copyright 2012-2022 JPI
  */
-
-declare(strict_types=1);
-
-namespace JPI\Utils;
-
 class URL {
 
     /**
      * Remove the leading slash from passed path (if there is one).
      *
-     * @param $path string
+     * @param string $path
      * @return string
      */
     public static function removeLeadingSlash(string $path): string {
@@ -27,7 +26,7 @@ class URL {
     /**
      * Remove the trailing slash from passed URL (if there is one).
      *
-     * @param $url string
+     * @param string $url
      * @return string
      */
     public static function removeTrailingSlash(string $url): string {
@@ -38,7 +37,7 @@ class URL {
     /**
      * Remove both leading & trailing slashes from passed path (if there is any).
      *
-     * @param $path string
+     * @param string $path
      * @return string
      */
     public static function removeSlashes(string $path): string {
@@ -48,7 +47,7 @@ class URL {
     /**
      * Add a leading slash to passed path (if there isn't one already).
      *
-     * @param $path string
+     * @param string $path
      * @return string
      */
     public static function addLeadingSlash(string $path): string {
@@ -60,7 +59,7 @@ class URL {
     /**
      * Add a trailing slash to passed URL (if there isn't one already).
      *
-     * @param $url string
+     * @param string $url
      * @return string
      */
     public static function addTrailingSlash(string $url): string {
@@ -115,7 +114,7 @@ class URL {
     /**
      * Parse the components out from passed URL string if passed.
      *
-     * @param $url string|null
+     * @param string|null $url
      */
     public function __construct(string $url = null) {
         if (!$url) {
@@ -144,8 +143,8 @@ class URL {
     }
 
     /**
-     * @param $scheme string|null
-     * @return $this
+     * @param string|null $scheme
+     * @return URL
      */
     public function setScheme(string $scheme = null): URL {
         $this->scheme = $scheme;
@@ -160,8 +159,8 @@ class URL {
     }
 
     /**
-     * @param $host string|null
-     * @return $this
+     * @param string|null $host
+     * @return URL
      */
     public function setHost(string $host = null): URL {
         $this->host = $host;
@@ -176,8 +175,8 @@ class URL {
     }
 
     /**
-     * @param $path string|null
-     * @return $this
+     * @param string|null $path
+     * @return URL
      */
     public function setPath(string $path = null): URL {
         $this->path = $path;
@@ -187,8 +186,8 @@ class URL {
     /**
      * Add part(s) to the current path.
      *
-     * @param $path string
-     * @return $this
+     * @param string $path
+     * @return URL
      */
     public function addPath(string $path): URL {
         if (!$this->path) {
@@ -207,8 +206,8 @@ class URL {
     /**
      * Set query parameters.
      *
-     * @param $params array
-     * @return $this
+     * @param array $params
+     * @return URL
      */
     public function setParams(array $params): URL {
         $this->params = $params;
@@ -218,9 +217,9 @@ class URL {
     /**
      * Add/set query parameter.
      *
-     * @param $key string
-     * @param $value string|array
-     * @return $this
+     * @param string $key
+     * @param string|array $value
+     * @return URL
      */
     public function setParam(string $key, $value): URL {
         $this->params[$key] = $value;
@@ -230,8 +229,8 @@ class URL {
     /**
      * Remove a query parameter.
      *
-     * @param $key string
-     * @return $this
+     * @param string $key
+     * @return URL
      */
     public function removeParam(string $key): URL {
         unset($this->params[$key]);
@@ -259,8 +258,8 @@ class URL {
     }
 
     /**
-     * @param $fragment string|null
-     * @return $this
+     * @param string|null $fragment
+     * @return URL
      */
     public function setFragment(string $fragment = null): URL {
         $this->fragment = $fragment;
