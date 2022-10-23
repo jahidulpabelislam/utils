@@ -33,5 +33,6 @@ trait Singleton {
      *
      * By default don't allow creating instances of the class outside the getter
      */
-    protected function __construct() {}
+    protected function __construct() {
+    }
 }
