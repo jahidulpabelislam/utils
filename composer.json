@@ -9,7 +9,12 @@
         }
     ],
     "keywords": [
-        "utilities"
+        "utility",
+        "utilities",
+        "helpers",
+        "url",
+        "collection",
+        "singleton"
     ],
     "require": {
         "php": "^7.1 || ^8.0"
