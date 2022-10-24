@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace JPI\Utils;
+
 /**
  * Very simple trait to add to classes that are singleton.
  *
@@ -8,11 +12,6 @@
  * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
  * @copyright 2012-2022 JPI
  */
-
-declare(strict_types=1);
-
-namespace JPI\Utils;
-
 trait Singleton {
 
     protected static $instance = null;
@@ -33,5 +32,6 @@ trait Singleton {
      *
      * By default don't allow creating instances of the class outside the getter
      */
-    protected function __construct() {}
+    protected function __construct() {
+    }
 }

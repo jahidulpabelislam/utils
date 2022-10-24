@@ -12,7 +12,10 @@
         "utilities"
     ],
     "require": {
-        "php": "^7.1"
+        "php": "^7.1 || ^8.0"
+    },
+    "require-dev": {
+        "jpi/codestyles": "^1.0.1"
     },
     "autoload": {
         "psr-4": {
