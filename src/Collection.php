@@ -104,6 +104,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate {
      * @param string $key
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($key) {
         return $this->get($key);
     }
