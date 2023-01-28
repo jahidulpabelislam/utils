@@ -168,6 +168,10 @@ class Collection implements
                 return $item[$key];
             }
 
+            if ($item instanceof Arrayable && isset($item->toArray()[$key])) {
+                return $item->toArray()[$key];
+            }
+
             if (isset($item->{$key})) {
                 return $item->{$key};
             }
