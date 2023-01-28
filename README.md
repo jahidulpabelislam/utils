@@ -22,10 +22,6 @@ Use [Composer](https://getcomposer.org/)
 $ composer require jpi/utils 
 ```
 
-## Changelog
-
-See [CHANGELOG](CHANGELOG.md)
-
 ## Support
 
 If you found this library interesting or useful please do spread the word of this library: share on your social's, star on GitHub, etc.

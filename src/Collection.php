@@ -15,8 +15,12 @@ use IteratorAggregate;
  * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
  * @copyright 2012-2022 JPI
  */
-class Collection implements ArrayAccess, Countable, IteratorAggregate {
-
+class Collection implements
+    Arrayable,
+    ArrayAccess,
+    Countable,
+    IteratorAggregate
+{
     protected $items;
 
     /**
@@ -164,6 +168,13 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate {
                 return $item[$key];
             }
 
+            if ($item instanceof Arrayable) {
+                $array = $item->toArray();
+                if (isset($array[$key])) {
+                    return $array[$key];
+                }
+            }
+
             if (isset($item->{$key})) {
                 return $item->{$key};
             }
@@ -228,5 +239,24 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate {
         });
 
         return $collection;
+    }
+
+    /**
+     * Try to get a array of items - also convert children to array if arrayable.
+     *
+     * @return array
+     */
+    public function toArray(): array {
+        $array = [];
+
+        foreach ($this->items as $key => $item) {
+            if ($item instanceof Arrayable) {
+                $item = $item->toArray();
+            }
+
+            $array[$key] = $item;
+        }
+
+        return $array;
     }
 }
