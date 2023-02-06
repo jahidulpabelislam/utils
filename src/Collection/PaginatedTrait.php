@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace JPI\Utils;
+namespace JPI\Utils\Collection;
 
 /**
  * Collection trait you use on collection classes that will be used for paginated results.
  */
-trait PaginatedCollectionTrait {
+trait PaginatedTrait {
 
-    use ImmutableCollectionTrait;
+    use ImmutableTrait;
 
     /**
      * @var int

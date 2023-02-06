@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace JPI\Utils;
+namespace JPI\Utils\Collection;
 
 use Exception;
 
 /**
  * Trait to go on collection classes that are immutable.
  */
-trait ImmutableCollectionTrait {
+trait ImmutableTrait {
 
     protected function resetCount(): void {
         // NOP
