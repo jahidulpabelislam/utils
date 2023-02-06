@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace JPI\Utils\Collection;
 
-use Exception;
-
 /**
  * Trait to go on collection classes that are immutable.
  */
