@@ -154,6 +154,13 @@ class Collection implements
     }
 
     /**
+     * @return int
+     */
+    public function getCount(): int {
+        return $this->count();
+    }
+
+    /**
      * @param mixed $item
      * @param string $key
      * @return mixed|null
