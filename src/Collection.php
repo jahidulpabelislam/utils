@@ -266,4 +266,12 @@ class Collection implements
 
         return $array;
     }
+
+    public function __clone() {
+        foreach ($this->items as $key => $value) {
+            if (is_object($value)) {
+                $this->items[$key] = clone $value;
+            }
+        }
+    }
 }
