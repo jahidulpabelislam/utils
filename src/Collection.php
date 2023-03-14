@@ -120,7 +120,7 @@ class Collection implements
      */
     public function offsetSet($key, $item): void {
         if ($key === null) {
-            $this->add($key);
+            $this->add($item);
         }
         else {
             $this->set($key, $item);
