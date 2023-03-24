@@ -8,29 +8,14 @@ use Stringable;
 
 /**
  * URL builder & helper methods around URLs.
- *
- * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
- * @copyright 2012-2022 JPI
  */
 class URL implements Stringable {
 
-    /**
-     * Remove the leading slash from passed path (if there is one).
-     *
-     * @param string $path
-     * @return string
-     */
     public static function removeLeadingSlash(string $path): string {
         $path = trim($path, " ");
         return ltrim($path, "/");
     }
 
-    /**
-     * Remove the trailing slash from passed URL (if there is one).
-     *
-     * @param string $url
-     * @return string
-     */
     public static function removeTrailingSlash(string $url): string {
         $url = trim($url, " ");
         return rtrim($url, "/");
@@ -38,32 +23,17 @@ class URL implements Stringable {
 
     /**
      * Remove both leading & trailing slashes from passed path (if there is any).
-     *
-     * @param string $path
-     * @return string
      */
     public static function removeSlashes(string $path): string {
         return trim($path, " /");
     }
 
-    /**
-     * Add a leading slash to passed path (if there isn't one already).
-     *
-     * @param string $path
-     * @return string
-     */
     public static function addLeadingSlash(string $path): string {
         $path = trim($path, " ");
         $path = ltrim($path, "/");
         return "/$path";
     }
 
-    /**
-     * Add a trailing slash to passed URL (if there isn't one already).
-     *
-     * @param string $url
-     * @return string
-     */
     public static function addTrailingSlash(string $url): string {
         $url = trim($url, " ");
         $url = rtrim($url, "/");
@@ -96,9 +66,6 @@ class URL implements Stringable {
      */
     protected $path;
 
-    /**
-     * @var array
-     */
     protected $params = [];
 
     /**
@@ -108,15 +75,11 @@ class URL implements Stringable {
 
     /**
      * Whether to add a trailing slash at the end of the path.
-     *
-     * @var bool
      */
     protected $addTrailingSlash = true;
 
     /**
      * Parse the components out from passed URL string if passed.
-     *
-     * @param string|null $url
      */
     public function __construct(string $url = null) {
         if (!$url) {
@@ -144,42 +107,24 @@ class URL implements Stringable {
         $this->setFragment($parsed["fragment"] ?? null);
     }
 
-    /**
-     * @param string|null $scheme
-     * @return URL
-     */
     public function setScheme(string $scheme = null): URL {
         $this->scheme = $scheme;
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getScheme(): ?string {
         return $this->scheme;
     }
 
-    /**
-     * @param string|null $host
-     * @return URL
-     */
     public function setHost(string $host = null): URL {
         $this->host = $host;
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getHost(): ?string {
         return $this->host;
     }
 
-    /**
-     * @param string|null $path
-     * @return URL
-     */
     public function setPath(string $path = null): URL {
         $this->path = $path;
         return $this;
@@ -187,9 +132,6 @@ class URL implements Stringable {
 
     /**
      * Add part(s) to the current path.
-     *
-     * @param string $path
-     * @return URL
      */
     public function addPath(string $path): URL {
         if (!$this->path) {
@@ -198,18 +140,12 @@ class URL implements Stringable {
         return $this->setPath(static::addTrailingSlash($this->path) . static::removeLeadingSlash($path));
     }
 
-    /**
-     * @return string|null
-     */
     public function getPath(): ?string {
         return $this->path;
     }
 
     /**
      * Set query parameters.
-     *
-     * @param array $params
-     * @return URL
      */
     public function setParams(array $params): URL {
         $this->params = $params;
@@ -218,10 +154,6 @@ class URL implements Stringable {
 
     /**
      * Add/set query parameter.
-     *
-     * @param string $key
-     * @param string|array $value
-     * @return URL
      */
     public function setParam(string $key, $value): URL {
         $this->params[$key] = $value;
@@ -230,9 +162,6 @@ class URL implements Stringable {
 
     /**
      * Remove a query parameter.
-     *
-     * @param string $key
-     * @return URL
      */
     public function removeParam(string $key): URL {
         unset($this->params[$key]);
@@ -241,16 +170,11 @@ class URL implements Stringable {
 
     /**
      * Get query parameters.
-     *
-     * @return array
      */
     public function getParams(): array {
         return $this->params;
     }
 
-    /**
-     * @return string|null
-     */
     public function getQuery(): ?string {
         if (!$this->params) {
             return null;
@@ -259,26 +183,17 @@ class URL implements Stringable {
         return http_build_query($this->params);
     }
 
-    /**
-     * @param string|null $fragment
-     * @return URL
-     */
     public function setFragment(string $fragment = null): URL {
         $this->fragment = $fragment;
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFragment(): ?string {
         return $this->fragment;
     }
 
     /**
      * Build the URL from current values of each component.
-     *
-     * @return string
      */
     public function build(): string {
         $string = "";
@@ -314,10 +229,6 @@ class URL implements Stringable {
         return $string;
     }
 
-    /**
-     * @return string
-     * @author Jahidul Islam <jahidul@d3r.com>
-     */
     public function __toString(): string {
         return $this->build();
     }

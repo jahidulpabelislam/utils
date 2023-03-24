@@ -8,9 +8,6 @@ namespace JPI\Utils;
  * Very simple trait to add to classes that are singleton.
  *
  * Assumes that nothing is required for the constructor.
- *
- * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
- * @copyright 2012-2022 JPI
  */
 trait Singleton {
 
