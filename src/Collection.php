@@ -11,9 +11,6 @@ use IteratorAggregate;
 
 /**
  * A collection class.
- *
- * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
- * @copyright 2012-2022 JPI
  */
 class Collection implements
     Arrayable,
@@ -28,96 +25,50 @@ class Collection implements
      */
     protected $count = null;
 
-    /**
-     * Collection constructor.
-     *
-     * @param array $items
-     */
     public function __construct(array $items = []) {
         $this->items = $items;
     }
 
-    /**
-     * @return void
-     */
     protected function resetCount(): void {
         $this->count = null;
     }
 
-    /**
-     * @param mixed $item
-     * @return void
-     */
     public function add($item): void {
         $this->items[] = $item;
         $this->resetCount();
     }
 
-    /**
-     * @param string $key
-     * @param mixed $item
-     * @return void
-     */
     public function set(string $key, $item): void {
         $this->items[$key] = $item;
         $this->resetCount();
     }
 
-    /**
-     * @param string $key
-     * @return bool
-     */
     public function isset(string $key): bool {
         return array_key_exists($key, $this->items);
     }
 
-    /**
-     * @param string $key
-     * @param mixed $default
-     * @return mixed
-     */
     public function get(string $key, $default = null) {
         return $this->items[$key] ?? $default;
     }
 
-    /**
-     * @param string $key
-     * @return void
-     */
     public function unset(string $key): void {
         unset($this->items[$key]);
         $this->resetCount();
     }
 
-    /**
-     * @return array
-     */
     public function getItems(): array {
         return $this->items;
     }
 
-    /**
-     * @param string $key
-     * @return bool
-     */
     public function offsetExists($key): bool {
         return $this->isset($key);
     }
 
-    /**
-     * @param string $key
-     * @return mixed
-     */
     #[\ReturnTypeWillChange]
     public function offsetGet($key) {
         return $this->get($key);
     }
 
-    /**
-     * @param string $key
-     * @param mixed $item
-     * @return void
-     */
     public function offsetSet($key, $item): void {
         if ($key === null) {
             $this->add($item);
@@ -127,24 +78,14 @@ class Collection implements
         }
     }
 
-    /**
-     * @param string $key
-     * @return void
-     */
     public function offsetUnset($key): void {
         $this->unset($key);
     }
 
-    /**
-     * @return ArrayIterator
-     */
     public function getIterator(): ArrayIterator {
         return new ArrayIterator($this->getItems());
     }
 
-    /**
-     * @return int
-     */
     public function count(): int {
         if ($this->count === null) {
             $this->count = count($this->getItems());
@@ -153,18 +94,10 @@ class Collection implements
         return $this->count;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int {
         return $this->count();
     }
 
-    /**
-     * @param mixed $item
-     * @param string $key
-     * @return mixed|null
-     */
     protected static function getFromItem($item, string $key) {
         if (is_array($item)) {
             return $item[$key] ?? null;
@@ -194,21 +127,12 @@ class Collection implements
         return null;
     }
 
-    /**
-     * @param callable $callback
-     * @return void
-     */
     public function each(callable $callback): void {
         foreach ($this as $key => $item) {
             $callback($key, $item);
         }
     }
 
-    /**
-     * @param string $toPluck
-     * @param string|null $keyedBy
-     * @return Collection
-     */
     public function pluck(string $toPluck, string $keyedBy = null): Collection {
         $plucked = new Collection();
 
@@ -227,10 +151,6 @@ class Collection implements
         return $plucked;
     }
 
-    /**
-     * @param string $groupByKey
-     * @return Collection
-     */
     public function groupBy(string $groupByKey): Collection {
         $collection = new Collection();
 
@@ -250,8 +170,6 @@ class Collection implements
 
     /**
      * Try to get a array of items - also convert children to array if arrayable.
-     *
-     * @return array
      */
     public function toArray(): array {
         $array = [];
