@@ -51,32 +51,20 @@ class URL implements Stringable {
         return "$url/";
     }
 
-    /**
-     * @var string|null
-     */
-    protected $scheme;
+    protected ?string $scheme = null;
 
-    /**
-     * @var string|null
-     */
-    protected $host;
+    protected ?string $host = null;
 
-    /**
-     * @var string|null
-     */
-    protected $path;
+    protected ?string $path = null;
 
-    protected $params = [];
+    protected array $params = [];
 
-    /**
-     * @var string|null
-     */
-    protected $fragment;
+    protected ?string $fragment = null;
 
     /**
      * Whether to add a trailing slash at the end of the path.
      */
-    protected $addTrailingSlash = true;
+    protected bool $addTrailingSlash = true;
 
     /**
      * Parse the components out from passed URL string if passed.
