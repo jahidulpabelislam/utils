@@ -35,20 +35,20 @@ class Collection implements
         $this->resetCount();
     }
 
-    public function set(string $key, $item): void {
+    public function set(string|int $key, $item): void {
         $this->items[$key] = $item;
         $this->resetCount();
     }
 
-    public function isset(string $key): bool {
+    public function isset(string|int $key): bool {
         return array_key_exists($key, $this->items);
     }
 
-    public function get(string $key, $default = null) {
+    public function get(string|int $key, $default = null) {
         return $this->items[$key] ?? $default;
     }
 
-    public function unset(string $key): void {
+    public function unset(string|int $key): void {
         unset($this->items[$key]);
         $this->resetCount();
     }
@@ -95,7 +95,7 @@ class Collection implements
         return $this->count();
     }
 
-    protected static function getFromItem($item, string $key) {
+    protected static function getFromItem($item, string|int $key) {
         if (is_array($item)) {
             return $item[$key] ?? null;
         }
@@ -133,7 +133,7 @@ class Collection implements
     public function pluck(string $toPluck, string $keyedBy = null): Collection {
         $plucked = new Collection();
 
-        $this->each(function (string $key, $item) use ($plucked, $toPluck, $keyedBy) {
+        $this->each(function (string|int $key, $item) use ($plucked, $toPluck, $keyedBy) {
             $value = static::getFromItem($item, $toPluck);
 
             if ($keyedBy) {
@@ -151,7 +151,7 @@ class Collection implements
     public function groupBy(string $groupByKey): Collection {
         $collection = new Collection();
 
-        $this->each(function (string $key, $item) use ($collection, $groupByKey) {
+        $this->each(function (string|int $key, $item) use ($collection, $groupByKey) {
             $value = static::getFromItem($item, $groupByKey);
 
             if (!isset($collection[$value])) {

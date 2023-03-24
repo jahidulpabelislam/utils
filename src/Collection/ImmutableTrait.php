@@ -17,11 +17,11 @@ trait ImmutableTrait {
         throw new Exception("Collection is immutable, adding is not allowed");
     }
 
-    public function set(string $key, $item): void {
+    public function set(string|int $key, $item): void {
         throw new Exception("Collection is immutable, adding/updating is not allowed");
     }
 
-    public function unset(string $key): void {
+    public function unset(string|int $key): void {
         throw new Exception("Collection is immutable, removing is not allowed");
     }
 }
