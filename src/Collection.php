@@ -18,12 +18,9 @@ class Collection implements
     Countable,
     IteratorAggregate
 {
-    protected $items;
+    protected array $items;
 
-    /**
-     * @var int|null
-     */
-    protected $count = null;
+    protected ?int $count = null;
 
     public function __construct(array $items = []) {
         $this->items = $items;

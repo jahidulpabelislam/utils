@@ -11,11 +11,11 @@ trait PaginatedTrait {
 
     use ImmutableTrait;
 
-    protected $totalCount;
+    protected int $totalCount;
 
-    protected $limit;
+    protected int $limit;
 
-    protected $page;
+    protected int $page;
 
     public function __construct(array $items, int $totalCount, int $limit, int $page) {
         $this->items = $items;
