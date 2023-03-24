@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace JPI\Utils;
 
+use Stringable;
+
 /**
  * URL builder & helper methods around URLs.
  *
  * @author Jahidul Pabel Islam <me@jahidulpabelislam.com>
  * @copyright 2012-2022 JPI
  */
-class URL {
+class URL implements Stringable {
 
     /**
      * Remove the leading slash from passed path (if there is one).
