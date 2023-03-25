@@ -74,7 +74,7 @@ class URL implements Stringable {
             return;
         }
 
-        $isProtocolRelative = strpos($url, "//") === 0;
+        $isProtocolRelative = str_starts_with($url, "//");
 
         if ($isProtocolRelative) {
             $url = "https:$url";
