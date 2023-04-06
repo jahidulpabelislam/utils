@@ -57,7 +57,7 @@ class URL implements Stringable {
 
     protected ?string $path = null;
 
-    protected array $params = [];
+    protected array $queryParams = [];
 
     protected ?string $fragment = null;
 
@@ -88,8 +88,8 @@ class URL implements Stringable {
         $this->setPath($parsed["path"] ?? null);
 
         if (isset($parsed["query"])) {
-            parse_str($parsed["query"], $params);
-            $this->setParams($params);
+            parse_str($parsed["query"], $queryParams);
+            $this->setQueryParams($queryParams);
         }
 
         $this->setFragment($parsed["fragment"] ?? null);
@@ -133,37 +133,37 @@ class URL implements Stringable {
     /**
      * Set query parameters.
      */
-    public function setParams(array $params): void {
-        $this->params = $params;
+    public function setQueryParams(array $params): void {
+        $this->queryParams = $params;
     }
 
     /**
      * Add/set query parameter.
      */
-    public function setParam(string $key, $value): void {
-        $this->params[$key] = $value;
+    public function setQueryParam(string $param, $value): void {
+        $this->queryParams[$param] = $value;
     }
 
     /**
      * Remove a query parameter.
      */
-    public function removeParam(string $key): void {
-        unset($this->params[$key]);
+    public function removeQueryParam(string $param): void {
+        unset($this->queryParams[$param]);
     }
 
     /**
      * Get query parameters.
      */
-    public function getParams(): array {
-        return $this->params;
+    public function getQueryParams(): array {
+        return $this->queryParams;
     }
 
     public function getQuery(): ?string {
-        if (!$this->params) {
+        if (!$this->queryParams) {
             return null;
         }
 
-        return http_build_query($this->params);
+        return http_build_query($this->queryParams);
     }
 
     public function setFragment(string $fragment = null): void {
@@ -196,11 +196,11 @@ class URL implements Stringable {
             $string .= static::addLeadingSlash($this->path);
         }
 
-        if ($this->addTrailingSlash && ($this->path || $this->params || $this->fragment)) {
+        if ($this->addTrailingSlash && ($this->path || $this->queryParams || $this->fragment)) {
             $string = static::addTrailingSlash($string);
         }
 
-        if ($this->params) {
+        if ($this->queryParams) {
             $string .= "?" . $this->getQuery();
         }
 
