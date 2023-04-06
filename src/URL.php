@@ -95,37 +95,35 @@ class URL implements Stringable {
         $this->setFragment($parsed["fragment"] ?? null);
     }
 
-    public function setScheme(string $scheme = null): URL {
+    public function setScheme(string $scheme = null): void {
         $this->scheme = $scheme;
-        return $this;
     }
 
     public function getScheme(): ?string {
         return $this->scheme;
     }
 
-    public function setHost(string $host = null): URL {
+    public function setHost(string $host = null): void {
         $this->host = $host;
-        return $this;
     }
 
     public function getHost(): ?string {
         return $this->host;
     }
 
-    public function setPath(string $path = null): URL {
+    public function setPath(string $path = null): void {
         $this->path = $path;
-        return $this;
     }
 
     /**
      * Add part(s) to the current path.
      */
-    public function addPath(string $path): URL {
+    public function addPath(string $path): void {
         if (!$this->path) {
-            return $this->setPath($path);
+            $this->setPath($path);
+            return;
         }
-        return $this->setPath(static::addTrailingSlash($this->path) . static::removeLeadingSlash($path));
+        $this->setPath(static::addTrailingSlash($this->path) . static::removeLeadingSlash($path));
     }
 
     public function getPath(): ?string {
@@ -135,25 +133,22 @@ class URL implements Stringable {
     /**
      * Set query parameters.
      */
-    public function setParams(array $params): URL {
+    public function setParams(array $params): void {
         $this->params = $params;
-        return $this;
     }
 
     /**
      * Add/set query parameter.
      */
-    public function setParam(string $key, $value): URL {
+    public function setParam(string $key, $value): void {
         $this->params[$key] = $value;
-        return $this;
     }
 
     /**
      * Remove a query parameter.
      */
-    public function removeParam(string $key): URL {
+    public function removeParam(string $key): void {
         unset($this->params[$key]);
-        return $this;
     }
 
     /**
@@ -171,9 +166,8 @@ class URL implements Stringable {
         return http_build_query($this->params);
     }
 
-    public function setFragment(string $fragment = null): URL {
+    public function setFragment(string $fragment = null): void {
         $this->fragment = $fragment;
-        return $this;
     }
 
     public function getFragment(): ?string {
