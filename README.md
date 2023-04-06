@@ -11,7 +11,7 @@ A tiny library that provides very simple utility classes. This is currently in d
 
 ## Dependencies
 
-- PHP 7.0+
+- PHP 8.0+
 - Composer
 
 ## Installation
