@@ -7,7 +7,9 @@
 [![License](https://poser.pugx.org/jpi/utils/license)](https://packagist.org/packages/jpi/utils)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/jahidulpabelislam/utils/0.x.svg?label=last%20activity)
 
-A tiny library that provides very simple utility classes. This is currently in development, so there will small `beta` releases as classes get added then the first major release. 
+A tiny library that provides very simple utility classes. This is currently in development, so there will small `beta` releases as classes get added then the full major release will be published when officially ready / stable.
+
+This provides a simple singleton trait to go on classes, URL builder class and a few different classes / traits around collections.
 
 ## Dependencies
 
@@ -21,6 +23,49 @@ Use [Composer](https://getcomposer.org/)
 ```bash
 $ composer require jpi/utils 
 ```
+
+## Usage
+
+### Singleton
+
+Simply add `\JPI\Utils\Singleton` to any class, this will make the constructor protected so the class can't be instantiated outside of the singleton getter, also provide a `get` method which handles the class being singleton.
+
+### URL
+
+`\JPI\Utils\URL` provides 5 static helper methods (which should be self-explanatory):
+
+- `removeLeadingSlash(string)`
+- `removeTrailingSlash(string)`
+- `removeSlashes(string)`
+- `addLeadingSlash(string)`
+- `addTrailingSlash(string)`
+
+`\JPI\Utils\URL` as a class instance provides building a URL, the class has a single optional string argument, which you can pass if you know what the starting URL should be. You then have the following methods to build on top of this starting URL:
+
+- `setScheme(string|null)`
+- `setHost(string|null)`
+- `setPath(string|null)`
+- `addPath(string)`
+- `setQueryParams(array)`
+- `setQueryParam(string, string|array)`
+- `removeQueryParam(string)`
+- `setFragment(string|null)`
+
+They all come with equivalent getter methods:
+
+- `getScheme: string|null`
+- `getHost: string|null`
+- `getPath: string|null`
+- `getQueryParams: array`
+- `getFragment: string|null`
+
+Also, a `getQuery: string|null` method which transform the query params to an encoded query string to be used in a URL (minus the `?`).
+
+Lastly the class implements `\Stringable` so you can cast the instance to a string or can manually call `build` method to get the URL as a string. 
+
+### Collection
+
+todo
 
 ## Support
 
