@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace JPI\Utils\Collection;
 
 /**
- * Trait to go on collection classes that are immutable.
+ * Trait to go on classes that extend '\JPI\Utils\Collection' to make them immutable.
  */
 trait ImmutableTrait {
 

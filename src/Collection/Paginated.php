@@ -9,7 +9,7 @@ use JPI\Utils\Collection;
 /**
  * Collection that is from a paginated result.
  */
-class Paginated extends Collection {
+class Paginated extends Collection implements PaginatedInterface {
 
     use PaginatedTrait;
 }
