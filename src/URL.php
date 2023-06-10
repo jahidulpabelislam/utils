@@ -140,7 +140,7 @@ class URL implements Stringable {
     /**
      * Add/set query parameter.
      */
-    public function setQueryParam(string $param, string|array $value): void {
+    public function setQueryParam(string $param, array|string|int $value): void {
         $this->queryParams[$param] = $value;
     }
 
