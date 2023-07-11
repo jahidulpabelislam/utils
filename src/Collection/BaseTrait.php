@@ -11,12 +11,9 @@ use JPI\Utils\Collection;
  */
 trait BaseTrait {
 
-    protected array $items;
-
     protected ?int $count = null;
 
-    public function __construct(array $items = []) {
-        $this->items = $items;
+    public function __construct(protected array $items = []) {
     }
 
     public function isset(string|int $key): bool {
