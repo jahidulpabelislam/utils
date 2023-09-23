@@ -95,6 +95,10 @@ class URL implements Stringable {
         $this->setFragment($parsed["fragment"] ?? null);
     }
 
+    public function setAddTrailingSlash(bool $addTrailingSlash): void {
+        $this->addTrailingSlash = $addTrailingSlash;
+    }
+
     public function setScheme(string $scheme = null): void {
         $this->scheme = $scheme;
     }
