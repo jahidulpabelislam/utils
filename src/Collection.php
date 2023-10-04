@@ -32,6 +32,11 @@ class Collection implements CollectionInterface {
         $this->resetCount();
     }
 
+    public function clear(): void {
+        $this->items = [];
+        $this->resetCount();
+    }
+
     public function offsetSet($key, $item): void {
         if ($key === null) {
             $this->add($item);

@@ -24,4 +24,8 @@ trait ImmutableTrait {
     public function unset(string|int $key): void {
         throw new Exception("Collection is immutable, removing is not allowed");
     }
+
+    public function clear(): void {
+        throw new Exception("Collection is immutable, clearing is not allowed");
+    }
 }

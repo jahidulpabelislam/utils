@@ -24,6 +24,8 @@ interface CollectionInterface extends
 
     public function get(string|int $key, $default = null);
 
+    public function clear(): void;
+
     public function getCount(): int;
 
     public function each(callable $callback): void;
