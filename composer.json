@@ -25,7 +25,11 @@
     },
     "autoload": {
         "psr-4": {
-            "JPI\\Utils\\": "src/",
+            "JPI\\Utils\\": "src/"
+        }
+    },
+     "autoload-dev": {
+        "psr-4": {
             "JPI\\Utils\\Tests\\": "tests/"
         }
     }
