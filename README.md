@@ -28,7 +28,7 @@ $ composer require jpi/utils
 
 ### Singleton
 
-Simply add `\JPI\Utils\Singleton` to any class, this will make the constructor protected so the class can't be instantiated outside of the singleton getter, also provide a `get` method which handles the class being singleton.
+Simply add `\JPI\Utils\Singleton` to any class, this will make the constructor protected so the class can't be instantiated outside the singleton getter, also provide a `get` method which handles the class being singleton.
 
 ### URL
 
@@ -63,9 +63,34 @@ Also, a `getQuery: string|null` method which transform the query params to an en
 
 Lastly the class implements `\Stringable` so you can cast the instance to a string or can manually call `build` method to get the URL as a string. 
 
-### Collection
+### Collections
 
-todo
+Here we have `\JPI\Utils\Collection` and `\JPI\Utils\Collection\Paginated`. 
+
+A collection works like a normal array as it implements `\ArrayAccess`, `\Countable` & `\IteratorAggregate` just with some extra methods (all should be self-explanatory), both classes have the below:
+
+- `isset(string|int $key)`
+- `get(string|int $key, $default = null)`
+- `getCount()`
+- `each(callable)`
+- `pluck(string $toPluck, string $keyedBy = null): CollectionInterface`
+- `groupBy(string $groupByKey): CollectionInterface`
+
+The `Collection` class also has the following methods (`Paginated` doesn't have as its immutable
+
+- `add(mixed $item)`
+- `set(string|int $key, mixed $item)`
+- `unset(string|int $key)`
+- `clear`
+
+A `Paginated` collection extends the `Collection` and adds the following methods:
+
+- `getTotalCount()`
+- `getLimit()` get what limit was applied when getting result
+- `getPage()` get what page number was applied when getting result
+
+We also have interfaces in case you want to create your own versions, `\JPI\Utils\CollectionInterface`, `\JPI\Utils\Collection\ImmutableInterface` & `\JPI\Utils\Collection\PaginatedInterface` (which extends `ImmutableInterface`).
+If you do create your own collection classes, and want to make an immutable or paginated version see `\JPI\Utils\Collection\ImmutableTrait` and `\JPI\Utils\Collection\PaginatedTrait`.
 
 ## Support
 
