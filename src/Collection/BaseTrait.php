@@ -2,6 +2,7 @@
 
 namespace JPI\Utils\Collection;
 
+use ArrayAccess;
 use ArrayIterator;
 use JPI\Utils\Arrayable;
 use JPI\Utils\Collection;
