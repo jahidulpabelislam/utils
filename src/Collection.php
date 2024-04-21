@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace JPI\Utils;
 
-use JPI\Utils\Collection\Immutable;
+use JPI\Utils\Collection\BaseTrait;
 
 /**
  * A collection class to hold items and isn't immutable.
  */
-class Collection extends Immutable implements CollectionInterface {
+class Collection implements CollectionInterface {
+
+    use BaseTrait;
 
     protected function resetCount(): void {
         $this->count = null;
