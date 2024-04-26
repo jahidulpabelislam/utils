@@ -9,6 +9,8 @@ namespace JPI\Utils\Collection;
  */
 trait PaginatedTrait {
 
+    use ImmutableTrait;
+
     public function __construct(
         protected array $items,
         protected int $totalCount,
