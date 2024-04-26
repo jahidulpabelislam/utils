@@ -14,18 +14,18 @@ trait ImmutableTrait {
     }
 
     public function add($item): void {
-        throw new Exception("Collection is immutable, adding is not allowed");
+        throw new Exception(__CLASS__ . " is immutable, adding is not allowed");
     }
 
     public function set(string|int $key, $item): void {
-        throw new Exception("Collection is immutable, adding/updating is not allowed");
+        throw new Exception(__CLASS__ . " is immutable, adding/updating is not allowed");
     }
 
     public function unset(string|int $key): void {
-        throw new Exception("Collection is immutable, removing is not allowed");
+        throw new Exception(__CLASS__ . " is immutable, removing is not allowed");
     }
 
     public function clear(): void {
-        throw new Exception("Collection is immutable, clearing is not allowed");
+        throw new Exception(__CLASS__ . " is immutable, clearing is not allowed");
     }
 }
