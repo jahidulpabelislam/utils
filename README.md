@@ -65,29 +65,29 @@ Lastly the class implements `\Stringable` so you can cast the instance to a stri
 
 ### Collections
 
-Here we have `\JPI\Utils\Collection` and `\JPI\Utils\Collection\Paginated`. 
+Here we have `\JPI\Utils\Collection`, `\JPI\Utils\Collection\Immutable` & `\JPI\Utils\Collection\Paginated`. 
 
-A collection works like a normal array as it implements `\ArrayAccess`, `\Countable` & `\IteratorAggregate` just with some extra methods (all should be self-explanatory), both classes have the below:
+A collection works like a normal array as it implements `\ArrayAccess`, `\Countable` & `\IteratorAggregate` just with some extra methods (all should be self-explanatory):
 
 - `isset(string|int $key)`
-- `get(string|int $key, $default = null)`
-- `getCount()`
+- `get(string|int $key, $default = null): mixed`
+- `getCount(): int`
 - `each(callable)`
 - `pluck(string $toPluck, string $keyedBy = null): CollectionInterface`
 - `groupBy(string $groupByKey): CollectionInterface`
 
-The `Collection` class also has the following methods (`Paginated` doesn't have as its immutable
+The `Collection` class also has the following methods (these exist on `Immutable` and `Paginated` but will throw an exception)
 
 - `add(mixed $item)`
 - `set(string|int $key, mixed $item)`
 - `unset(string|int $key)`
 - `clear`
 
-A `Paginated` collection extends the `Collection` and adds the following methods:
+A `Paginated` instance has the following additional methods:
 
-- `getTotalCount()`
-- `getLimit()` get what limit was applied when getting result
-- `getPage()` get what page number was applied when getting result
+- `getTotalCount(): int`
+- `getLimit(): int` get what limit was applied when getting result
+- `getPage(): int` get what page number was applied when getting result
 
 We also have interfaces in case you want to create your own versions, `\JPI\Utils\CollectionInterface`, `\JPI\Utils\Collection\ImmutableInterface` & `\JPI\Utils\Collection\PaginatedInterface` (which extends `ImmutableInterface`).
 If you do create your own collection classes, and want to make an immutable or paginated version see `\JPI\Utils\Collection\ImmutableTrait` and `\JPI\Utils\Collection\PaginatedTrait`.
