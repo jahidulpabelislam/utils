@@ -9,7 +9,7 @@
 
 A tiny library that provides very simple utility classes.
 
-This provides a simple singleton trait to go on classes, URL builder class and a few different classes / traits around collections.
+This provides a simple singleton trait to go on classes, URL builder class and a few different classes/traits around collections.
 
 ## Dependencies
 
@@ -28,7 +28,7 @@ $ composer require jpi/utils
 
 ### Singleton
 
-Simply add `\JPI\Utils\Singleton` to any class, this will make the constructor protected so the class can't be instantiated outside the singleton getter, also provide a `get` method which handles the class being singleton.
+Simply add `\JPI\Utils\Singleton` to any class, this will make the constructor protected so the class can't be instantiated outside the singleton getter, also provides a `get` method which handles the class being singleton.
 
 ### URL
 
@@ -59,9 +59,9 @@ They all come with equivalent getter methods:
 - `getQueryParams: array`
 - `getFragment: string|null`
 
-Also, a `getQuery: string|null` method which transform the query params to an encoded query string to be used in a URL (minus the `?`).
+Also, a `getQuery: string|null` method which transforms the query params to an encoded query string to be used in a URL (minus the `?`).
 
-Lastly the class implements `\Stringable` so you can cast the instance to a string or can manually call `build` method to get the URL as a string. 
+Lastly, the class implements `\Stringable` so you can cast the instance to a string or can manually call `build` method to get the URL as a string. 
 
 ### Collections
 
@@ -86,17 +86,17 @@ The `Collection` class also has the following methods (these exist on `Immutable
 A `Paginated` instance has the following additional methods:
 
 - `getTotalCount(): int`
-- `getLimit(): int` get what limit was applied when getting result
-- `getPage(): int` get what page number was applied when getting result
+- `getLimit(): int` get what limit was applied when getting the result
+- `getPage(): int` get what page number was applied when getting the result
 
 We also have interfaces in case you want to create your own versions, `\JPI\Utils\CollectionInterface`, `\JPI\Utils\Collection\ImmutableInterface` & `\JPI\Utils\Collection\PaginatedInterface` (which extends `ImmutableInterface`).
 If you do create your own collection classes, and want to make an immutable or paginated version see `\JPI\Utils\Collection\ImmutableTrait` and `\JPI\Utils\Collection\PaginatedTrait`.
 
 ## Support
 
-If you found this library interesting or useful please do spread the word of this library: share on your social's, star on GitHub, etc.
+If you found this library interesting or useful please spread the word about this library: share on your socials, star on GitHub, etc.
 
-If you find any issues or have any feature requests, you can open an [issue](https://github.com/jahidulpabelislam/utils/issues) or can email [me @ jahidulpabelislam.com](mailto:me@jahidulpabelislam.com) :smirk:.
+If you find any issues or have any feature requests, you can open an [issue](https://github.com/jahidulpabelislam/utils/issues) or email [me @ jahidulpabelislam.com](mailto:me@jahidulpabelislam.com) :smirk:.
 
 ## Authors
 
