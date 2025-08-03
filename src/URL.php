@@ -187,7 +187,8 @@ class URL implements Stringable {
         if ($this->scheme) {
             if ($this->scheme === "//") {
                 $string = "//";
-            } else {
+            }
+            else {
                 $string = "$this->scheme://";
             }
         }
