@@ -89,7 +89,7 @@ trait BaseTrait {
         }
     }
 
-    public function pluck(string $toPluck, string $keyedBy = null): Collection {
+    public function pluck(string $toPluck, ?string $keyedBy = null): Collection {
         $plucked = new Collection();
 
         $this->each(function (string|int $key, $item) use ($plucked, $toPluck, $keyedBy) {

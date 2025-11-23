@@ -73,7 +73,7 @@ A collection works like a normal array as it implements `\ArrayAccess`, `\Counta
 - `get(string|int $key, $default = null): mixed`
 - `getCount(): int`
 - `each(callable)`
-- `pluck(string $toPluck, string $keyedBy = null): CollectionInterface`
+- `pluck(string $toPluck, ?string $keyedBy = null): CollectionInterface`
 - `groupBy(string $groupByKey): CollectionInterface`
 
 The `Collection` class also has the following methods (these exist on `Immutable` and `Paginated` but will throw an exception)

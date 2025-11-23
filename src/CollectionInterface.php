@@ -30,7 +30,7 @@ interface CollectionInterface extends
 
     public function each(callable $callback): void;
 
-    public function pluck(string $toPluck, string $keyedBy = null): CollectionInterface;
+    public function pluck(string $toPluck, ?string $keyedBy = null): CollectionInterface;
 
     public function groupBy(string $groupByKey): CollectionInterface;
 }

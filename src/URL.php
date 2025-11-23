@@ -69,7 +69,7 @@ class URL implements Stringable {
     /**
      * Parse the components out from passed URL string if passed.
      */
-    public function __construct(string $url = null) {
+    public function __construct(?string $url = null) {
         if (!$url) {
             return;
         }
@@ -99,7 +99,7 @@ class URL implements Stringable {
         $this->addTrailingSlash = $addTrailingSlash;
     }
 
-    public function setScheme(string $scheme = null): void {
+    public function setScheme(?string $scheme = null): void {
         $this->scheme = $scheme;
     }
 
@@ -107,7 +107,7 @@ class URL implements Stringable {
         return $this->scheme;
     }
 
-    public function setHost(string $host = null): void {
+    public function setHost(?string $host = null): void {
         $this->host = $host;
     }
 
@@ -115,7 +115,7 @@ class URL implements Stringable {
         return $this->host;
     }
 
-    public function setPath(string $path = null): void {
+    public function setPath(?string $path = null): void {
         $this->path = $path;
     }
 
@@ -170,7 +170,7 @@ class URL implements Stringable {
         return http_build_query($this->queryParams);
     }
 
-    public function setFragment(string $fragment = null): void {
+    public function setFragment(?string $fragment = null): void {
         $this->fragment = $fragment;
     }
 
