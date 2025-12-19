@@ -134,30 +134,18 @@ class URL implements Stringable {
         return $this->path;
     }
 
-    /**
-     * Set query parameters.
-     */
     public function setQueryParams(array $params): void {
         $this->queryParams = $params;
     }
 
-    /**
-     * Add/set query parameter.
-     */
     public function setQueryParam(string $param, array|string|int $value): void {
         $this->queryParams[$param] = $value;
     }
 
-    /**
-     * Remove a query parameter.
-     */
     public function removeQueryParam(string $param): void {
         unset($this->queryParams[$param]);
     }
 
-    /**
-     * Get query parameters.
-     */
     public function getQueryParams(): array {
         return $this->queryParams;
     }

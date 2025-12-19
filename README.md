@@ -104,4 +104,4 @@ If you find any issues or have any feature requests, you can open an [issue](htt
 
 ## Licence
 
-This module is licenced under the General Public Licence - see the [Licence](LICENSE.md) file for details
+This module is licensed under the General Public Licence - see the [Licence](LICENSE.md) file for details
