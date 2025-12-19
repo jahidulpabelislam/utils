@@ -13,10 +13,7 @@ trait Singleton {
 
     protected static $instance = null;
 
-    /**
-     * @return static
-     */
-    public static function get() {
+    public static function get(): static {
         if (static::$instance === null) {
             static::$instance = new static();
         }
