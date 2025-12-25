@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JPI\Utils\Tests\URL;
 
 use JPI\Utils\URL;
