@@ -56,6 +56,10 @@ trait BaseTrait {
         return $this->count();
     }
 
+    public function jsonSerialize(): array {
+        return $this->getItems();
+    }
+
     protected static function getFromItem($item, string|int $key) {
         if (is_array($item)) {
             return $item[$key] ?? null;

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace JPI\Utils;
 
+use JsonSerializable;
 use Stringable;
 
 /**
  * URL builder & helper methods around URLs.
  */
-class URL implements Stringable {
+class URL implements JsonSerializable, Stringable {
 
     public static function removeLeadingSlash(string $path): string {
         $path = trim($path, " ");
@@ -205,6 +206,10 @@ class URL implements Stringable {
     }
 
     public function __toString(): string {
+        return $this->build();
+    }
+
+    public function jsonSerialize(): string {
         return $this->build();
     }
 }
