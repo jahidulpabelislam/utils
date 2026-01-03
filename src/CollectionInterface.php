@@ -7,12 +7,14 @@ namespace JPI\Utils;
 use ArrayAccess;
 use Countable;
 use IteratorAggregate;
+use JsonSerializable;
 
 interface CollectionInterface extends
     Arrayable,
     ArrayAccess,
     Countable,
-    IteratorAggregate {
+    IteratorAggregate,
+    JsonSerializable {
 
     public function isset(string|int $key): bool;
 
