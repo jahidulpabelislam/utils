@@ -7,6 +7,9 @@ namespace JPI\Utils\Tests\URL;
 use JPI\Utils\URL;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \JPI\Utils\URL
+ */
 final class BuilderTest extends TestCase {
 
     public function testAll(): void {
