@@ -37,6 +37,9 @@ trait BaseTrait {
 
     #[\ReturnTypeWillChange]
     public function offsetGet($key) {
+        if (!$this->isset($key)) {
+            trigger_error("Undefined array key $key", E_USER_WARNING);
+        }
         return $this->get($key);
     }
 
