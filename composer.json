@@ -30,7 +30,7 @@
     },
      "autoload-dev": {
         "psr-4": {
-            "JPI\\Utils\\Tests\\": "tests/"
+            "JPI\\Utils\\Tests\\Unit\\": "tests/unit"
         }
     }
 }
