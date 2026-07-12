@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JPI\Utils\Tests\URL;
+namespace JPI\Utils\Tests\URL\Unit;
 
 use JPI\Utils\URL;
 use PHPUnit\Framework\TestCase;
